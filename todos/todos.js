@@ -15,22 +15,41 @@ const todoForm = document.querySelector('.todo-form');
 const logoutButton = document.querySelector('#logout');
 const deleteButton = document.querySelector('.delete-button');
 
-todoForm.addEventListener('submit', async(e) => {
+todoForm.addEventListener('submit', async (e) => {
     // on submit, create a todo, reset the form, and display the todos
+    e.preventDefault();
+
+    const data = newFormData(todoForm);
+
+    await createTodo({
+        todo: data.get('todo'),
+        complete: false
+    });
+    FormData.reset();
+
+    await displayTodos();
+
 });
 
 async function displayTodos() {
     // fetch the todos
-    
+    const todosEl = await displayTodos();
     // display the list of todos
-
+    for (let todo of todoList) {
+        const todosEl = document.createElement('p';)
+        todosEl.classList.add('todo-item')
+        
+        todosEl.textContent = `${todo.todo}`
+        todosEl.append('todoItemEl')
+        }
     // be sure to give each todo an event listener
-
     // on click, complete that todo
 }
 
 // add an on load listener that fetches and displays todos on load
-
+wubdiw.addEventListener('load', () =>{
+    displayTodos();
+})
 logoutButton.addEventListener('click', () => {
     logout();
 });
