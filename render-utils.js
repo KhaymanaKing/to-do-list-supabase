@@ -11,7 +11,7 @@ export function renderTodo(todo) {
     // add the 'todo' css class no matter what
     todoItem.classList.add('todo');
     // put the todo's text into the p tag
-    todoItem.textContent = `${todo}`;
+    todoItem.textContent = todo.todo;
     // append stuff
     div.append(todoItem);
     // return the div
