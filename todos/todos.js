@@ -33,7 +33,8 @@ todoForm.addEventListener('submit', async (e) => {
 
 async function displayTodos() {
     // fetch the todos
-    const todosEl = await displayTodos();
+    todosEl.textContent = '';
+    const todoList = await getTodos();
     // display the list of todos
     for (let todo of todoList) {
         const todosEl = document.createElement('p';)
@@ -47,7 +48,7 @@ async function displayTodos() {
 }
 
 // add an on load listener that fetches and displays todos on load
-wubdiw.addEventListener('load', () =>{
+window.addEventListener('load', () =>{
     displayTodos();
 })
 logoutButton.addEventListener('click', () => {
@@ -57,6 +58,8 @@ logoutButton.addEventListener('click', () => {
 
 deleteButton.addEventListener('click', async() => {
     // delete all todos
+    await deleteAllTodos();
 
     // then refetch and display the updated list of todos
+    displayTodos();
 });
